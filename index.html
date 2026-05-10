@@ -6,7 +6,7 @@
   <title>Feliz Día Mamá 💐</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ========== ESTILOS (completos, sin cambios) ========== */
+    /* ========== ESTILOS ========== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --rose: #F9C4D2; --rose-dark: #E88EA8; --rose-deep: #C45C80;
@@ -85,7 +85,6 @@
     .countdown-sublabel { font-size: 0.9rem; color: var(--text-mid); margin-top: 0.5rem; font-weight: 300; }
     footer { text-align: center; padding: 3rem 2rem 4rem; color: var(--text-light); }
     footer span { color: var(--rose-deep); font-size: 1.1rem; }
-    .confetti-piece { position: fixed; width: 10px; height: 10px; border-radius: 2px; opacity: 0; pointer-events: none; z-index: 9999; }
     .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--text-dark); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; opacity: 0; transition: all 0.35s ease; z-index: 9999; white-space: nowrap; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     input[type="file"] { display: none; }
@@ -106,13 +105,13 @@
   <section class="ticket-section" id="regalo"><div class="section-label">Tu regalo</div><h2 class="section-title">Elige tu fecha ✨</h2><p class="section-desc" style="margin:0 auto 0.5rem;">Tienes boletos para una experiencia de una de tus series favoritas "FRIENDS". Toca la fecha que prefieras y tu boleto aparecerá.</p>
     <div class="ticket-card"><div class="ticket-show">Experiencia Interactiva</div><div class="ticket-venue">📍 ¿Cuál fecha eliges, mamá?</div>
       <div class="dates-grid">
-        <button class="date-btn" data-day="17" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">17</span><span class="month-name">Marzo</span><span class="day-name">Domingo</span></button>
-        <button class="date-btn" data-day="23" data-name="Sábado" onclick="selectDate(this)"><span class="day-num">23</span><span class="month-name">Marzo</span><span class="day-name">Sábado</span></button>
-        <button class="date-btn" data-day="24" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">24</span><span class="month-name">Marzo</span><span class="day-name">Domingo</span></button>
-        <button class="date-btn" data-day="30" data-name="Sábado" onclick="selectDate(this)"><span class="day-num">30</span><span class="month-name">Marzo</span><span class="day-name">Sábado</span></button>
-        <button class="date-btn" data-day="31" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">31</span><span class="month-name">Marzo</span><span class="day-name">Domingo</span></button>
+        <button class="date-btn" data-day="17" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">17</span><span class="month-name">Mayo</span><span class="day-name">Domingo</span></button>
+        <button class="date-btn" data-day="23" data-name="Sábado" onclick="selectDate(this)"><span class="day-num">23</span><span class="month-name">Mayo</span><span class="day-name">Sábado</span></button>
+        <button class="date-btn" data-day="24" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">24</span><span class="month-name">Mayo</span><span class="day-name">Domingo</span></button>
+        <button class="date-btn" data-day="30" data-name="Sábado" onclick="selectDate(this)"><span class="day-num">30</span><span class="month-name">Mayo</span><span class="day-name">Sábado</span></button>
+        <button class="date-btn" data-day="31" data-name="Domingo" onclick="selectDate(this)"><span class="day-num">31</span><span class="month-name">Mayo</span><span class="day-name">Domingo</span></button>
       </div>
-      <div class="ticket-visual" id="ticket-visual"><div class="fake-ticket"><div class="ft-label">Boleto Oficial</div><div class="ft-title">Experiencia Interactiva — FRIENDS</div><div class="ft-row"><div class="ft-item"><div class="ft-item-label">Fecha</div><div class="ft-item-val" id="tkt-fecha">—</div></div><div class="ft-item"><div class="ft-item-label">Día</div><div class="ft-item-val" id="tkt-dia">—</div></div><div class="ft-item"><div class="ft-item-label">Mes/Año</div><div class="ft-item-val">Marzo 2026</div></div></div><div class="ft-row"><div class="ft-item"><div class="ft-item-label">Titular</div><div class="ft-item-val">Mamá 💐</div></div><div class="ft-item"><div class="ft-item-label">Asiento</div><div class="ft-item-val">VIP</div></div></div><div class="ft-barcode"><div class="barcode-lines" id="barcode"></div><div class="ft-seat">¡Tu noche especial!</div></div></div><p style="margin-top:1rem; color:var(--rose-deep); font-weight:700;">🎉 ¡Excelente elección!</p></div>
+      <div class="ticket-visual" id="ticket-visual"><div class="fake-ticket"><div class="ft-label">Boleto Oficial</div><div class="ft-title">Experiencia Interactiva — FRIENDS</div><div class="ft-row"><div class="ft-item"><div class="ft-item-label">Fecha</div><div class="ft-item-val" id="tkt-fecha">—</div></div><div class="ft-item"><div class="ft-item-label">Día</div><div class="ft-item-val" id="tkt-dia">—</div></div><div class="ft-item"><div class="ft-item-label">Mes/Año</div><div class="ft-item-val">Mayo 2026</div></div></div><div class="ft-row"><div class="ft-item"><div class="ft-item-label">Titular</div><div class="ft-item-val">Mamá 💐</div></div><div class="ft-item"><div class="ft-item-label">Asiento</div><div class="ft-item-val">VIP</div></div></div><div class="ft-barcode"><div class="barcode-lines" id="barcode"></div><div class="ft-seat">¡Tu noche especial!</div></div></div><p style="margin-top:1rem; color:var(--rose-deep); font-weight:700;">🎉 ¡Excelente elección!</p></div>
     </div>
   </section>
   <div class="divider"></div>
@@ -125,19 +124,16 @@
 <input type="file" id="file-input" accept="image/*">
 
 <script>
-  // ========== FUNCIONES GLOBALES ==========
   let countdownInterval = null;
-  // Año fijo: MARZO 2026
   const TARGET_YEAR = 2026;
 
-  // Actualiza el contador según la fecha elegida (día y nombre)
   function updateCountdown(dayNum, dayName) {
     if (countdownInterval) clearInterval(countdownInterval);
     
     function calcular() {
       const ahora = new Date();
-      // Fijamos la fecha objetivo a las 00:00 UTC del día elegido en marzo de 2026
-      const objetivoUTC = Date.UTC(TARGET_YEAR, 2, dayNum); // Marzo = mes 2
+      // CORRECCIÓN: Mayo es el índice 4 en JavaScript (Enero=0, Febrero=1, Marzo=2, Abril=3, Mayo=4)
+      const objetivoUTC = Date.UTC(TARGET_YEAR, 4, dayNum); 
       const ahoraUTC = Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate());
       const diffMs = objetivoUTC - ahoraUTC;
       const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
@@ -147,31 +143,28 @@
       
       if (diffDias < 0) {
         cdDiasElem.textContent = '0';
-        cdNoteElem.innerHTML = `⚠️ La fecha ${dayName} ${dayNum} de Marzo ${TARGET_YEAR} ya pasó. Elige otra fecha.`;
+        cdNoteElem.innerHTML = `⚠️ La fecha ${dayName} ${dayNum} de Mayo ${TARGET_YEAR} ya pasó. Elige otra fecha.`;
       } else if (diffDias === 0) {
         cdDiasElem.textContent = '¡HOY!';
-        cdNoteElem.innerHTML = `🎉 ¡Es hoy, mamá! Disfruta tu experiencia ${dayName} ${dayNum} de Marzo ${TARGET_YEAR}. 🎉`;
+        cdNoteElem.innerHTML = `🎉 ¡Es hoy, mamá! Disfruta tu experiencia ${dayName} ${dayNum} de Mayo ${TARGET_YEAR}. 🎉`;
       } else {
         cdDiasElem.textContent = diffDias;
-        cdNoteElem.innerHTML = `Faltan ${diffDias} día${diffDias !== 1 ? 's' : ''} para el ${dayName} ${dayNum} de Marzo ${TARGET_YEAR} 🌸`;
+        cdNoteElem.innerHTML = `Faltan ${diffDias} día${diffDias !== 1 ? 's' : ''} para el ${dayName} ${dayNum} de Mayo ${TARGET_YEAR} 🌸`;
       }
     }
     calcular();
-    countdownInterval = setInterval(calcular, 60000); // actualiza cada minuto
+    countdownInterval = setInterval(calcular, 60000);
   }
 
-  // Selección de fecha (llamada desde los botones)
   function selectDate(btn) {
     document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     const day = parseInt(btn.dataset.day);
     const dia = btn.dataset.name;
     
-    document.getElementById('tkt-fecha').textContent = day + ' Marzo';
+    document.getElementById('tkt-fecha').textContent = day + ' Mayo';
     document.getElementById('tkt-dia').textContent = dia;
-    // El año ya está fijo en el HTML: "Marzo 2026"
     
-    // Código de barras aleatorio
     const bc = document.getElementById('barcode');
     bc.innerHTML = '';
     for (let i = 0; i < 28; i++) {
@@ -185,11 +178,16 @@
     setTimeout(() => tv.classList.add('visible'), 50);
     
     updateCountdown(day, dia);
-    launchConfetti();
     showToast('¡Fecha seleccionada! 🎉');
   }
   
-  // ---------- PÉTALOS ----------
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
   function initPetals() {
     const PETAL_EMOJIS = ['🌸', '🌺', '🌹', '💮', '🌷', '🪷'];
     const container = document.getElementById('petals');
@@ -205,71 +203,17 @@
     }
   }
   
-  // ---------- GALERÍA ----------
+  // GALERÍA BÁSICA
   const SLOT_LABELS = ['Una foto de nosotros', 'Tu recuerdo favorito', 'Un momento especial', 'Nuestra aventura', 'Tu sonrisa', 'Un día feliz', 'Tiempo en familia', 'Tu foto favorita'];
-  let slots = [];
-  let currentSlotIndex = null;
-  
-  function buildGallery() {
-    const grid = document.getElementById('gallery-grid');
-    grid.innerHTML = '';
-    slots.forEach((slot, i) => {
-      const el = document.createElement('div');
-      el.className = 'gallery-slot' + (slot.img ? ' has-image' : '');
-      el.onclick = () => triggerUpload(i);
-      if (slot.img) {
-        el.innerHTML = `<img src="${slot.img}" alt="Recuerdo"><div class="slot-overlay"><button onclick="event.stopPropagation(); changeSlot(${i})">🔄</button><button onclick="event.stopPropagation(); removeSlot(${i})">✕</button></div>`;
-      } else {
-        el.innerHTML = `<div class="slot-icon">📷</div><div class="slot-text">${slot.label}</div>`;
-      }
-      grid.appendChild(el);
-    });
-    const addBtn = document.createElement('button');
-    addBtn.className = 'add-slot-btn';
-    addBtn.innerHTML = '<div class="slot-icon">＋</div><div class="slot-text">Agregar foto</div>';
-    addBtn.onclick = () => addSlot();
-    grid.appendChild(addBtn);
-  }
-  
-  function addSlot() { slots.push({ img: null, label: SLOT_LABELS[slots.length % SLOT_LABELS.length] }); buildGallery(); }
-  function triggerUpload(i) { if (slots[i].img) return; currentSlotIndex = i; document.getElementById('file-input').click(); }
-  function changeSlot(i) { currentSlotIndex = i; document.getElementById('file-input').click(); }
-  function removeSlot(i) { slots[i].img = null; buildGallery(); showToast('Foto eliminada'); }
-  
-  // ---------- CONFETTI ----------
-  const CONFETTI_COLORS = ['#F9C4D2', '#DDD6F7', '#C8EDE0', '#FFD9B7', '#E88EA8', '#A99BE0'];
-  function launchConfetti() {
-    for (let i = 0; i < 50; i++) {
-      setTimeout(() => {
-        const c = document.createElement('div');
-        c.className = 'confetti-piece';
-        c.style.cssText = `left:${Math.random()*100}vw;top:${Math.random()*40+20}vh;background:${CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)]};transform:rotate(${Math.random()*360}deg);border-radius:${Math.random()>0.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;`;
-        document.body.appendChild(c);
-        c.animate([{ opacity:1, transform:`translateY(0) rotate(${Math.random()*360}deg)` }, { opacity:0, transform:`translateY(${60+Math.random()*80}px) rotate(${Math.random()*720}deg)` }], { duration:900+Math.random()*600, easing:'ease-out'}).onfinish = () => c.remove();
-      }, i*30);
-    }
-  }
-  
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
-  
-  // ---------- INICIALIZACIÓN ----------
-  document.addEventListener('DOMContentLoaded', () => {
-    initPetals();
-    for (let i = 0; i < 6; i++) slots.push({ img: null, label: SLOT_LABELS[i] });
-    buildGallery();
-    document.getElementById('file-input').addEventListener('change', function() {
-      if (!this.files[0] || currentSlotIndex === null) return;
-      const reader = new FileReader();
-      reader.onload = e => { slots[currentSlotIndex].img = e.target.result; buildGallery(); showToast('¡Foto agregada! 🌸'); currentSlotIndex = null; };
-      reader.readAsDataURL(this.files[0]);
-      this.value = '';
-    });
+  const grid = document.getElementById('gallery-grid');
+  SLOT_LABELS.forEach(label => {
+    const el = document.createElement('div');
+    el.className = 'gallery-slot';
+    el.innerHTML = `<div class="slot-icon">📷</div><div class="slot-text">${label}</div>`;
+    grid.appendChild(el);
   });
+
+  window.onload = initPetals;
 </script>
 </body>
 </html>
