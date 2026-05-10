@@ -49,12 +49,11 @@
     .date-btn .day-num { font-size: 1.8rem; font-weight: 700; color: var(--rose-deep); }
     .date-btn .month-name { font-size: 0.75rem; color: var(--text-mid); font-weight: 600; }
 
-    /* Galería Estilo Polaroid */
+    /* Galería Estilo Polaroid (Actualizado: padding ajustado) */
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
-    .gallery-item { background: white; padding: 12px 12px 30px 12px; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: rotate(var(--rotation)); transition: transform 0.3s ease; }
+    .gallery-item { background: white; padding: 12px; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: rotate(var(--rotation)); transition: transform 0.3s ease; }
     .gallery-item:hover { transform: rotate(0deg) scale(1.05); z-index: 5; }
-    .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid #eee; }
-    .gallery-item p { font-family: 'Playfair Display', serif; font-size: 1rem; text-align: center; margin-top: 15px; color: var(--text-mid); }
+    .gallery-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid #eee; display: block; }
 
     /* Contador */
     .countdown-bar { background: white; border-radius: 28px; padding: 3rem 2.5rem; text-align: center; box-shadow: 0 6px 30px rgba(180,100,150,0.1); margin-top: 2rem; }
@@ -119,13 +118,13 @@
 </div>
 
 <script>
-  // CONFIGURACIÓN DE TUS FOTOS
+  // CONFIGURACIÓN DE TUS FOTOS (Actualizado: Solo URLs, sin texto)
   const MIS_FOTOS = [
-    { url: 'mama1.jpg', texto: 'Un recuerdo especial' },
-    { url: 'mama2.jpg', texto: 'Tu sonrisa favorita' },
-    { url: 'mama3.jpg', texto: 'Siempre juntos' },
-    { url: 'mama4.jpg', texto: 'Momentos felices' },
-    { url: 'mama5.jpg', texto: 'Te quiero mucho' }
+    'mama1.jpg',
+    'mama2.jpg',
+    'mama3.jpg',
+    'mama4.jpg',
+    'mama5.jpg'
   ];
 
   const TARGET_YEAR = 2026;
@@ -169,16 +168,16 @@
 
   function cargarGaleria() {
     const grid = document.getElementById('gallery-grid');
-    MIS_FOTOS.forEach((foto, index) => {
+    MIS_FOTOS.forEach((url, index) => {
       const item = document.createElement('div');
       item.className = 'gallery-item';
       // Rotación aleatoria para efecto Polaroid
       const rot = (Math.random() * 8 - 4).toFixed(1);
       item.style.setProperty('--rotation', `${rot}deg`);
       
+      // Actualizado: Se eliminó la etiqueta <p>
       item.innerHTML = `
-        <img src="${foto.url}" alt="Foto ${index + 1}" onerror="this.src='https://via.placeholder.com/300?text=Error:+Sube+${foto.url}'">
-        <p>${foto.texto}</p>
+        <img src="${url}" alt="Foto ${index + 1}" onerror="this.src='https://via.placeholder.com/300?text=Error:+Sube+${url}'">
       `;
       grid.appendChild(item);
     });
