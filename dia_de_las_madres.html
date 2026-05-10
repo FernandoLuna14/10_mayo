@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Día Mamá 💐</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ========== ESTILOS (sin cambios, solo lo necesario) ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rose: #F9C4D2;
+      --rose-dark: #E88EA8;
+      --rose-deep: #C45C80;
+      --mint: #C8EDE0;
+      --mint-dark: #7DCAB4;
+      --lavender: #DDD6F7;
+      --lavender-dark: #A99BE0;
+      --peach: #FFD9B7;
+      --peach-dark: #F5A76C;
+      --cream: #FFF8F0;
+      --text-dark: #3D2B3D;
+      --text-mid: #7A5F7A;
+      --text-light: #B09AB0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    .bg-blobs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--rose);
+      top: -150px;
+      left: -150px;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--lavender);
+      top: 30%;
+      right: -100px;
+      animation-direction: alternate-reverse;
+    }
+
+    .blob-3 {
+      width: 350px;
+      height: 350px;
+      background: var(--mint);
+      bottom: 10%;
+      left: 20%;
+    }
+
+    .blob-4 {
+      width: 300px;
+      height: 300px;
+      background: var(--peach);
+      bottom: -80px;
+      right: 30%;
+      animation-direction: alternate-reverse;
+    }
+
+    @keyframes drift {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(30px, 20px) scale(1.08);
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .petals-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .petal {
+      position: absolute;
+      top: -20px;
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: fallPetal linear infinite;
+    }
+
+    @keyframes fallPetal {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.8;
+      }
+
+      90% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .tag-small {
+      display: inline-block;
+      background: white;
+      border: 1.5px solid var(--rose-dark);
+      color: var(--rose-deep);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose-deep);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-mid);
+      max-width: 480px;
+      margin: 1rem auto 2.5rem;
+      animation: fadeUp 0.8s ease 0.2s both;
+      font-weight: 300;
+    }
+
+    .scroll-hint {
+      animation: fadeUp 0.8s ease 0.5s both, bounce 2s ease 1.5s infinite;
+      color: var(--rose-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-mid);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--rose-dark), transparent);
+      opacity: 0.3;
+    }
+
+    .ticket-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+      box-shadow: 0 8px 40px rgba(200, 100, 130, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ticket-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(to right, var(--rose-dark), var(--lavender-dark), var(--mint-dark));
+    }
+
+    .ticket-show {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .ticket-venue {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .dates-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .date-btn {
+      border: 2px solid var(--rose);
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 1.4rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .date-btn:hover {
+      border-color: var(--rose-dark);
+      background: #fff0f5;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(200, 100, 130, 0.15);
+    }
+
+    .date-btn.selected {
+      border-color: var(--rose-deep);
+      background: linear-gradient(135deg, #FFF0F5, #F5E8FF);
+      transform: translateY(-3px);
+    }
+
+    .date-btn .day-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--rose-deep);
+      line-height: 1;
+    }
+
+    .date-btn .day-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .date-btn .month-name {
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      font-weight: 600;
+    }
+
+    .ticket-visual {
+      margin-top: 1.5rem;
+      display: none;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .ticket-visual.visible {
+      display: block;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .fake-ticket {
+      background: linear-gradient(135deg, #1a0a2e, #3a1a52);
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      color: white;
+      max-width: 420px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fake-ticket::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(255, 180, 220, 0.15), transparent 60%);
+    }
+
+    .ft-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 0.25rem;
+    }
+
+    .ft-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .ft-row {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .ft-item .ft-item-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .ft-item .ft-item-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .ft-barcode {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .barcode-lines {
+      display: flex;
+      gap: 2px;
+      height: 36px;
+      align-items: flex-end;
+    }
+
+    .barcode-lines span {
+      display: block;
+      width: 3px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 1px;
+    }
+
+    .ft-seat {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .message-bubble {
+      background: white;
+      border-radius: 28px 28px 28px 8px;
+      padding: 2.5rem;
+      box-shadow: 0 6px 30px rgba(180, 100, 150, 0.1);
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    .msg-heart {
+      position: absolute;
+      top: -16px;
+      left: 28px;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--rose-dark), var(--rose-deep));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    .gallery-slot {
+      aspect-ratio: 1;
+      border-radius: 20px;
+      border: 2px dashed var(--rose);
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-slot.has-image {
+      border-style: solid;
+      border-color: var(--rose-dark);
+    }
+
+    .gallery-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .slot-icon {
+      font-size: 2rem;
+      color: var(--rose);
+    }
+
+    .slot-text {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .slot-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 18px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-slot.has-image:hover .slot-overlay {
+      display: flex;
+    }
+
+    .slot-overlay button {
+      background: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .slot-overlay button:hover {
+      transform: scale(1.1);
+    }
+
+    .add-slot-btn {
+      aspect-ratio: 1;
+      border-radius: 20px;
+      border: 2px dashed var(--lavender-dark);
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .add-slot-btn:hover {
+      background: #f5f0ff;
+      border-color: var(--lavender-dark);
+      transform: translateY(-3px);
+    }
+
+    .countdown-bar {
+      background: white;
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 6px 30px rgba(180, 100, 150, 0.1);
+      margin-top: 2rem;
+    }
+
+    .countdown-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem;
+      color: var(--rose-deep);
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .countdown-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    .countdown-sublabel {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-top: 0.5rem;
+      font-weight: 300;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem 4rem;
+      color: var(--text-light);
+    }
+
+    footer span {
+      color: var(--rose-deep);
+      font-size: 1.1rem;
+    }
+
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--text-dark);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.35s ease;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+  <div class="petals-container" id="petals"></div>
+  <div class="page">
+    <div class="hero">
+      <div class="tag-small">10 de Mayo · Día de las Madres</div>
+      <h1 class="hero-title">Feliz día,<br><em>mamá</em> 💐</h1>
+      <p class="hero-subtitle">Tengo algo que espero te guste mucho. Desplázate para descubrir tu regalo.</p>
+      <div class="scroll-hint" onclick="document.getElementById('regalo').scrollIntoView({behavior:'smooth'})">Descubrir
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </div>
+    </div>
+    <section>
+      <div class="section-label">Para ti</div>
+      <h2 class="section-title">Con todo mi amor</h2>
+      <div class="message-bubble">
+        <div class="msg-heart">🤍</div>
+        <p>Mamá, en este día tan especial quiero regalarte una experiencia que sé que vas a disfrutar muchísimo.</p>
+        <p>Escoge la fecha que más te acomode, ¡Te lo mereces todo!</p>
+        <p style="color:var(--rose-deep);font-style:italic;">Con todo mi amor ✨</p>
+      </div>
+    </section>
+    <div class="divider"></div>
+    <section class="ticket-section" id="regalo">
+      <div class="section-label">Tu regalo</div>
+      <h2 class="section-title">Elige tu fecha ✨</h2>
+      <p class="section-desc" style="margin:0 auto 0.5rem;">Tienes boletos para una experiencia de una de tus series
+        favoritas "FRIENDS". Toca la fecha que prefieras y tu boleto aparecerá.</p>
+      <div class="ticket-card">
+        <div class="ticket-show">Experiencia Interactiva</div>
+        <div class="ticket-venue">📍 ¿Cuál fecha eliges, mamá?</div>
+        <div class="dates-grid">
+          <button class="date-btn" data-day="17" data-name="Domingo" onclick="selectDate(this)"><span
+              class="day-num">17</span><span class="month-name">Marzo</span><span
+              class="day-name">Domingo</span></button>
+          <button class="date-btn" data-day="23" data-name="Sábado" onclick="selectDate(this)"><span
+              class="day-num">23</span><span class="month-name">Marzo</span><span
+              class="day-name">Sábado</span></button>
+          <button class="date-btn" data-day="24" data-name="Domingo" onclick="selectDate(this)"><span
+              class="day-num">24</span><span class="month-name">Marzo</span><span
+              class="day-name">Domingo</span></button>
+          <button class="date-btn" data-day="30" data-name="Sábado" onclick="selectDate(this)"><span
+              class="day-num">30</span><span class="month-name">Marzo</span><span
+              class="day-name">Sábado</span></button>
+          <button class="date-btn" data-day="31" data-name="Domingo" onclick="selectDate(this)"><span
+              class="day-num">31</span><span class="month-name">Marzo</span><span
+              class="day-name">Domingo</span></button>
+        </div>
+        <div class="ticket-visual" id="ticket-visual">
+          <div class="fake-ticket">
+            <div class="ft-label">Boleto Oficial</div>
+            <div class="ft-title">Experiencia Interactiva — FRIENDS</div>
+            <div class="ft-row">
+              <div class="ft-item">
+                <div class="ft-item-label">Fecha</div>
+                <div class="ft-item-val" id="tkt-fecha">—</div>
+              </div>
+              <div class="ft-item">
+                <div class="ft-item-label">Día</div>
+                <div class="ft-item-val" id="tkt-dia">—</div>
+              </div>
+              <div class="ft-item">
+                <div class="ft-item-label">Mes/Año</div>
+                <div class="ft-item-val" id="tkt-mesano">Marzo ????</div>
+              </div>
+            </div>
+            <div class="ft-row">
+              <div class="ft-item">
+                <div class="ft-item-label">Titular</div>
+                <div class="ft-item-val">Mamá 💐</div>
+              </div>
+              <div class="ft-item">
+                <div class="ft-item-label">Asiento</div>
+                <div class="ft-item-val">VIP</div>
+              </div>
+            </div>
+            <div class="ft-barcode">
+              <div class="barcode-lines" id="barcode"></div>
+              <div class="ft-seat">¡Tu noche especial!</div>
+            </div>
+          </div>
+          <p style="margin-top:1rem; color:var(--rose-deep); font-weight:700;">🎉 ¡Excelente elección!</p>
+        </div>
+      </div>
+    </section>
+    <div class="divider"></div>
+    <section style="text-align:center;">
+      <div class="section-label">Tiempo restante</div>
+      <h2 class="section-title">El gran día se acerca 🌸</h2>
+      <div class="countdown-bar">
+        <div class="countdown-num" id="cd-dias">—</div>
+        <div class="countdown-label">Días</div>
+        <div class="countdown-sublabel" id="cd-note">Selecciona una fecha para ver cuánto falta</div>
+      </div>
+    </section>
+    <div class="divider"></div>
+    <section id="galeria">
+      <div class="section-label">Recuerdos</div>
+      <h2 class="section-title">Nuestros momentos 📷</h2>
+      <p class="section-desc">Toca cada marco para agregar tus fotos favoritas. ¡Llena esta galería de recuerdos
+        hermosos!</p>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+    <footer>Hecho con <span>♥</span> especialmente para ti · Feliz Día de las Madres</footer>
+  </div>
+  <div class="toast" id="toast"></div>
+  <input type="file" id="file-input" accept="image/*">
+
+  <script>
+    // ---------- FUNCIONES GLOBALES ----------
+    let countdownInterval = null;
+    let currentYear = null;   // año calculado para marzo (futuro)
+
+    // Obtiene el año objetivo para marzo: el próximo marzo a partir de hoy
+    function getTargetYearForMarch() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth(); // 0=enero, 2=marzo
+      // Si estamos en marzo o después (mes >= 2), el próximo marzo es año siguiente
+      if (currentMonth >= 2) { // marzo es mes 2
+        return currentYear + 1;
+      } else {
+        return currentYear;
+      }
+    }
+
+    // Actualiza el contador y la visualización del boleto con el año correcto
+    function updateCountdown(dayNum, dayName) {
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      const targetYear = getTargetYearForMarch();
+      currentYear = targetYear;
+      // Actualizar el año mostrado en el boleto
+      document.getElementById('tkt-mesano').textContent = `Marzo ${targetYear}`;
+
+      function calcular() {
+        const ahora = new Date();
+        const objetivoUTC = Date.UTC(targetYear, 2, dayNum); // marzo = 2
+        const ahoraUTC = Date.UTC(ahora.getFullYear(), ahora.getMonth(), ahora.getDate());
+        const diffMs = objetivoUTC - ahoraUTC;
+        const diffDias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+        const cdDiasElem = document.getElementById('cd-dias');
+        const cdNoteElem = document.getElementById('cd-note');
+
+        if (diffDias < 0) {
+          // Esto no debería ocurrir porque siempre es futuro, pero por seguridad:
+          cdDiasElem.textContent = '0';
+          cdNoteElem.innerHTML = `⚠️ La fecha ${dayName} ${dayNum} de Marzo ${targetYear} ya pasó. Recarga la página.`;
+        } else if (diffDias === 0) {
+          cdDiasElem.textContent = '¡HOY!';
+          cdNoteElem.innerHTML = `🎉 ¡Es hoy, mamá! Disfruta tu experiencia ${dayName} ${dayNum} de Marzo ${targetYear}. 🎉`;
+        } else {
+          cdDiasElem.textContent = diffDias;
+          cdNoteElem.innerHTML = `Faltan ${diffDias} día${diffDias !== 1 ? 's' : ''} para el ${dayName} ${dayNum} de Marzo ${targetYear} 🌸`;
+        }
+      }
+      calcular();
+      countdownInterval = setInterval(calcular, 60000);
+    }
+
+    // Selección de fecha (llamada desde los botones)
+    function selectDate(btn) {
+      document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const day = parseInt(btn.dataset.day);
+      const dia = btn.dataset.name;
+
+      document.getElementById('tkt-fecha').textContent = day + ' Marzo';
+      document.getElementById('tkt-dia').textContent = dia;
+
+      // Código de barras aleatorio
+      const bc = document.getElementById('barcode');
+      bc.innerHTML = '';
+      for (let i = 0; i < 28; i++) {
+        const s = document.createElement('span');
+        s.style.height = (10 + Math.random() * 26) + 'px';
+        bc.appendChild(s);
+      }
+
+      const tv = document.getElementById('ticket-visual');
+      tv.classList.remove('visible');
+      setTimeout(() => tv.classList.add('visible'), 50);
+
+      updateCountdown(day, dia);
+      launchConfetti();
+      showToast('¡Fecha seleccionada! 🎉');
+    }
+
+    // ---------- PETALOS ----------
+    function initPetals() {
+      const PETAL_EMOJIS = ['🌸', '🌺', '🌹', '💮', '🌷', '🪷'];
+      const container = document.getElementById('petals');
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.textContent = PETAL_EMOJIS[Math.floor(Math.random() * PETAL_EMOJIS.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.fontSize = (1 + Math.random() * 0.8) + 'rem';
+        p.style.animationDuration = (8 + Math.random() * 10) + 's';
+        p.style.animationDelay = (Math.random() * 12) + 's';
+        container.appendChild(p);
+      }
+    }
+
+    // ---------- GALERÍA ----------
+    const SLOT_LABELS = ['Una foto de nosotros', 'Tu recuerdo favorito', 'Un momento especial', 'Nuestra aventura', 'Tu sonrisa', 'Un día feliz', 'Tiempo en familia', 'Tu foto favorita'];
+    let slots = [];
+    let currentSlotIndex = null;
+
+    function buildGallery() {
+      const grid = document.getElementById('gallery-grid');
+      grid.innerHTML = '';
+      slots.forEach((slot, i) => {
+        const el = document.createElement('div');
+        el.className = 'gallery-slot' + (slot.img ? ' has-image' : '');
+        el.onclick = () => triggerUpload(i);
+        if (slot.img) {
+          el.innerHTML = `<img src="${slot.img}" alt="Recuerdo"><div class="slot-overlay"><button onclick="event.stopPropagation(); changeSlot(${i})">🔄</button><button onclick="event.stopPropagation(); removeSlot(${i})">✕</button></div>`;
+        } else {
+          el.innerHTML = `<div class="slot-icon">📷</div><div class="slot-text">${slot.label}</div>`;
+        }
+        grid.appendChild(el);
+      });
+      const addBtn = document.createElement('button');
+      addBtn.className = 'add-slot-btn';
+      addBtn.innerHTML = '<div class="slot-icon">＋</div><div class="slot-text">Agregar foto</div>';
+      addBtn.onclick = () => addSlot();
+      grid.appendChild(addBtn);
+    }
+
+    function addSlot() { slots.push({ img: null, label: SLOT_LABELS[slots.length % SLOT_LABELS.length] }); buildGallery(); }
+    function triggerUpload(i) { if (slots[i].img) return; currentSlotIndex = i; document.getElementById('file-input').click(); }
+    function changeSlot(i) { currentSlotIndex = i; document.getElementById('file-input').click(); }
+    function removeSlot(i) { slots[i].img = null; buildGallery(); showToast('Foto eliminada'); }
+
+    // ---------- CONFETTI ----------
+    const CONFETTI_COLORS = ['#F9C4D2', '#DDD6F7', '#C8EDE0', '#FFD9B7', '#E88EA8', '#A99BE0'];
+    function launchConfetti() {
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const c = document.createElement('div');
+          c.className = 'confetti-piece';
+          c.style.cssText = `left:${Math.random() * 100}vw;top:${Math.random() * 40 + 20}vh;background:${CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)]};transform:rotate(${Math.random() * 360}deg);border-radius:${Math.random() > 0.5 ? '50%' : '2px'};width:${6 + Math.random() * 8}px;height:${6 + Math.random() * 8}px;`;
+          document.body.appendChild(c);
+          c.animate([{ opacity: 1, transform: `translateY(0) rotate(${Math.random() * 360}deg)` }, { opacity: 0, transform: `translateY(${60 + Math.random() * 80}px) rotate(${Math.random() * 720}deg)` }], { duration: 900 + Math.random() * 600, easing: 'ease-out' }).onfinish = () => c.remove();
+        }, i * 30);
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    // ---------- INICIALIZACIÓN ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      initPetals();
+      for (let i = 0; i < 6; i++) slots.push({ img: null, label: SLOT_LABELS[i] });
+      buildGallery();
+      document.getElementById('file-input').addEventListener('change', function () {
+        if (!this.files[0] || currentSlotIndex === null) return;
+        const reader = new FileReader();
+        reader.onload = e => { slots[currentSlotIndex].img = e.target.result; buildGallery(); showToast('¡Foto agregada! 🌸'); currentSlotIndex = null; };
+        reader.readAsDataURL(this.files[0]);
+        this.value = '';
+      });
+      // Mostrar el año actual en el boleto (placeholder)
+      const year = getTargetYearForMarch();
+      document.getElementById('tkt-mesano').textContent = `Marzo ${year}`;
+    });
+  </script>
+</body>
+
+</html>
